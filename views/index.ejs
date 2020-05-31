@@ -1,0 +1,47 @@
+<%- include('./includes/head.ejs') %>
+  <body>
+    <%- include('./includes/navigation.ejs') %>
+    <div class="container">
+      <main class="text-capitalize my-3">
+        <div class="row">
+          <div class="col-8 offset-2">
+            <form>
+              <div class="form-group">
+                <label for="dataset"
+                  ><h3>Drag / Upload your dataset here</h3></label
+                >
+              </div>
+              <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input
+                    type="file"
+                    class="custom-file-input"
+                    id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01"
+                  />
+                  <label class="custom-file-label" for="inputGroupFile01"
+                    >Choose file</label
+                  >
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-lg-6 col-10">
+                  <button type="submit" class="btn btn-warning">
+                    Visualize
+                  </button>
+                  <button type="submit" class="btn btn-success">
+                    View Algorithm
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div>
+              <a type="button" href="/result">See Results</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <%- include('./includes/footer.ejs') %>    
+  </body>
+</html>

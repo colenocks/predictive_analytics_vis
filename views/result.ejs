@@ -1,0 +1,79 @@
+<%- include('./includes/head.ejs') %>
+  <body>
+    <%- include('./includes/navigation.ejs') %>
+    <div class="container">
+      <main class="results">
+        <ul class="nav nav-pills nav-fill my-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="pills-visualization-tab"
+              data-toggle="pill"
+              href="#pills-visualization"
+              role="tab"
+              aria-controls="pills-visualization"
+              aria-selected="true"
+              >Visualizations</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="pills-algorithm-tab"
+              data-toggle="pill"
+              href="#pills-algorithm"
+              role="tab"
+              aria-controls="pills-algorithm"
+              aria-selected="false"
+              >Algorithm</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="pills-stats-tab"
+              data-toggle="pill"
+              href="#pills-stats"
+              role="tab"
+              aria-controls="pills-stats"
+              aria-selected="false"
+              >Stats</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="pills-visualization"
+            role="tabpanel"
+            aria-labelledby="pills-visualization-tab"
+          >
+            See Visualizations here...
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-algorithm"
+            role="tabpanel"
+            aria-labelledby="pills-algorithm-tab"
+          >
+            ...
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-stats"
+            role="tabpanel"
+            aria-labelledby="pills-stats-tab"
+          >
+            ...
+          </div>
+        </div>
+        <div class="mt-5 text-center text-capitalize">
+          <p>
+            Upload another dataset? <a type="button" href="index.html">Home</a>
+          </p>
+        </div>
+      </main>
+    </div>
+    <%- include('./includes/footer.ejs') %>
+  </body>
+</html>
