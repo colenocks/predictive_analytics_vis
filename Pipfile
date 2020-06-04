@@ -1,0 +1,28 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+autopep8 = "*"
+
+[packages]
+bokeh = "*"
+jupyter = "*"
+sklearn = "*"
+pandas = "*"
+plotly = "*"
+openpyxl = "*"
+scipy = "*"
+numpy = "*"
+cufflinks = "*"
+chart-studio = "*"
+statsmodels = "*"
+seaborn = "*"
+matplotlib = "*"
+psutil = "*"
+requests = "*"
+
+[requires]
+python_version = "3.8"
