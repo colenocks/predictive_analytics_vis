@@ -5,23 +5,16 @@
       <main class="text-capitalize my-3">
         <div class="row">
           <div class="col-8 offset-2">
-            <form>
+            <form method="POST" enctype='multipart/form-data'>
               <div class="form-group">
                 <label for="dataset"
                   ><h3>Drag / Upload your dataset here</h3></label
                 >
               </div>
               <div class="input-group mb-3">
-                <div class="custom-file">
-                  <input
-                    type="file"
-                    class="custom-file-input"
-                    id="inputGroupFile01"
-                    aria-describedby="inputGroupFileAddon01"
-                  />
-                  <label class="custom-file-label" for="inputGroupFile01"
-                    >Choose file</label
-                  >
+                <div class="form-group">
+                    <label for="controlfile">Example file input</label>
+                    <input name="file"type="file" class="form-control-file" id="controlfile">
                 </div>
               </div>
               <div class="form-group row">
@@ -36,7 +29,14 @@
               </div>
             </form>
             <div>
-              <a type="button" href="/result">See Results</a>
+              <% if(filepath) {%>
+                <form action="/result" method="POST">
+                  <input name="file_path" type="hidden" value="<%= filepath %>">
+                </form>
+                <a href="/result">Done! See your results...</a>
+                <% } else {%>
+              <p>Upload file to see results</p>
+              <%}%>
             </div>
           </div>
         </div>
