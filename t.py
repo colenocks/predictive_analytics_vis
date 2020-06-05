@@ -89,12 +89,10 @@ init_notebook_mode(connected=True)
 # ip = get_ipython()
 # ip.register_magics(jupyternotify.JupyterNotifyMagics)
 
-
 # In[7]:
 
 
 # pwd
-
 
 # In[8]:
 
@@ -164,7 +162,7 @@ hr['Attrition'].value_counts()
 
 # plotting histograms for the numerical columns or attributes
 hr.hist(figsize=(26, 26))
-plt.savefig('images\\fig17.png', dpi=150)
+plt.savefig('public\\images\\fig17.png', dpi=150)
 
 
 # In[18]:
@@ -196,7 +194,7 @@ fig['layout'].update(xaxis=dict(range=[15, 60], dtick=5))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 #### plotly to matplotlib conversion using plot_mpl ####
-plotly.io.write_image(fig, "images\\fig19.png")
+plotly.io.write_image(fig, "public\\images\\fig19.png")
 
 
 # In[20]:
@@ -306,7 +304,7 @@ fig['layout'].update(xaxis=dict(range=[0, 30], dtick=2))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 # Convert to matplotlib using plot_mpl #
-plotly.io.write_image(fig, "images\\fig19.png")
+plotly.io.write_image(fig, "public\\images\\fig29.png")
 
 
 # In[25]:
@@ -443,7 +441,7 @@ fig['layout'].update(xaxis=dict(range=[0, 6], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 # Convert to matplotlib using plot_mpl #
-plotly.io.write_image(fig, "images\\fig36.png")
+plotly.io.write_image(fig, "public\\images\\fig36.png")
 
 
 # In[37]:
@@ -501,7 +499,7 @@ fig['layout'].update(xaxis=dict(range=[0, 40], dtick=5))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 # Convert to matplotlib using plot_mpl #
-plotly.io.write_image(fig, "images\\fig41.png")
+plotly.io.write_image(fig, "public\\images\\fig41.png")
 
 
 # In[42]:
@@ -529,7 +527,7 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 18], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "images\\fig43.png")
+plotly.io.write_image(fig, "public\\images\\fig43.png")
 
 
 # In[44]:
@@ -557,7 +555,7 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 15], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "images\\fig45.png")
+plotly.io.write_image(fig, "public\\images\\fig45.png")
 
 # In[46]:
 
@@ -584,7 +582,7 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 40], dtick=5))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "images\\fig47.png")
+plotly.io.write_image(fig, "public\\images\\fig47.png")
 
 
 # In[48]:
@@ -620,7 +618,7 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 17], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "images\\fig50.png")
+plotly.io.write_image(fig, "public\\images\\fig50.png")
 
 
 # In[51]:
@@ -718,7 +716,7 @@ fig['layout'].update(title='Monthly Income by Attrition Status')
 fig['layout'].update(xaxis=dict(range=[0, 20000], dtick=2000))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "images\\fig60.png")
+plotly.io.write_image(fig, "public\\images\\fig60.png")
 
 
 # In[61]:
@@ -745,7 +743,7 @@ fig['layout'].update(title='Percent Salary Hike by Attrition Status')
 fig['layout'].update(xaxis=dict(range=[10, 26], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "images\\fig62.png")
+plotly.io.write_image(fig, "public\\images\\fig62.png")
 
 # In[63]:
 
@@ -946,7 +944,7 @@ sns.heatmap(corr,
             mask=mask,
             # annot=True, fmt='.2f',
             linewidths=.2, cmap="YlGnBu")
-plt.savefig('images\\fig44heatmap')
+plt.savefig('public\\images\\fig44heatmap')
 
 # In[81]:
 
@@ -1038,7 +1036,6 @@ print('Size of Full dataset is: {}'.format(hr.shape))
 X_train, X_test, y_train, y_test = train_test_split(hr,
                                                     target,
                                                     test_size=0.25,
-                                                    random_state=0,
                                                     stratify=target)
 print("Number transactions X_train dataset: ", X_train.shape)
 print("Number transactions y_train dataset: ", y_train.shape)
@@ -1051,12 +1048,13 @@ print("Number transactions y_test dataset: ", y_test.shape)
 
 # selection of algorithms to consider and set performance measure
 models = []
-models.append(('Logistic Regression', LogisticRegression(solver='liblinear', random_state=0,
+models.append(('Logistic Regression', LogisticRegression(solver='liblinear',
+
                                                          class_weight='balanced')))
 models.append(('Random Forest', RandomForestClassifier(
-    n_estimators=110, random_state=0)))
+    n_estimators=110)))
 models.append(('Gradient Boosting', GradientBoostingClassifier
-               (n_estimators=20, random_state=0)))
+               (n_estimators=20)))
 
 
 # In[181]:
@@ -1074,7 +1072,7 @@ i = 0
 # evaluate each model using cross-validation
 for name, model in models:
     kfold = model_selection.KFold(
-        n_splits=10, random_state=0)  # 10-fold cross-validation
+        n_splits=10)  # 10-fold cross-validation
 
     CV_ACC_R = model_selection.cross_val_score(  # accuracy scoring
         model, X_train, y_train, cv=kfold, scoring='accuracy')
@@ -1103,7 +1101,7 @@ fig.suptitle('Algorithm Accuracy Comparison')
 ax = fig.add_subplot(111)
 plt.boxplot(acc_R)
 ax.set_xticklabels(names)
-plt.savefig('images\\algorithms\\A_fig124.png', dpi=150)
+plt.savefig('public\\algorithms\\A_fig124.png', dpi=150)
 
 
 # In[125]:
@@ -1117,7 +1115,7 @@ fig.suptitle('Algorithm ROC AUC Comparison')
 ax = fig.add_subplot(111)
 plt.boxplot(auc_R)
 ax.set_xticklabels(names)
-plt.savefig('images\\algorithms\\A_fig125.png', dpi=150)
+plt.savefig('public\\algorithms\\A_fig125.png', dpi=150)
 
 
 # In[ ]:
@@ -1130,10 +1128,9 @@ plt.savefig('images\\algorithms\\A_fig125.png', dpi=150)
 
 
 # using 10 fold Cross-Validation to train our Logistic Regression Model and estimate its AUC score.
-kfold = model_selection.KFold(n_splits=5, random_state=0)
+kfold = model_selection.KFold(n_splits=5)
 modelCV = LogisticRegression(solver='liblinear',
-                             class_weight="balanced",
-                             random_state=0)
+                             class_weight="balanced")
 scoring = 'roc_auc'
 results = model_selection.cross_val_score(
     modelCV, X_train, y_train, cv=kfold, scoring=scoring)
@@ -1147,8 +1144,7 @@ print("AUC score (STD): %.2f (%.2f)" % (results.mean(), results.std()))
 # hyper-parameter list to fine-tune
 param_grid = {'C': np.arange(1e-03, 2, 0.01)}
 log_gs = GridSearchCV(LogisticRegression(solver='liblinear',  # setting GridSearchCV
-                                         class_weight="balanced",
-                                         random_state=0),
+                                         class_weight="balanced"),
                       iid=True,
                       return_train_score=True,
                       param_grid=param_grid,
@@ -1219,8 +1215,7 @@ print('AUC score: %.3f' % logit_roc_auc)
 # but we will use the random forest algorithm because
 # it allows us to know which features are of the most importance in predicting the target feature ("attrition")
 # fine-tuning the Random Forest algorithm's hyper-parameters by cross-validation against the AUC score
-rf_classifier = RandomForestClassifier(class_weight="balanced",
-                                       random_state=0)
+rf_classifier = RandomForestClassifier(class_weight="balanced")
 param_grid = {'n_estimators': [110],
               'min_samples_split': [8],
               'min_samples_leaf': [1],
@@ -1257,7 +1252,7 @@ plt.title("Feature Importance")  # Create plot title
 plt.bar(range(X_train.shape[1]), importances[indices])  # Add bars
 # Add feature names as x-axis labels
 plt.xticks(range(X_train.shape[1]), names, rotation=90)
-plt.savefig('images\\algorithms\\A_fig155.png', dpi=150)
+plt.savefig('public\\algorithms\\A_fig155.png', dpi=150)
 # Show plot
 
 # In[156]:
@@ -1345,7 +1340,7 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('ROC Graph')
 plt.legend(loc="lower right")
-plt.savefig('images\\algorithms\\A_fig190.png', dpi=150)
+plt.savefig('public\\algorithms\\A_fig190.png', dpi=150)
 plt.show()
 
 
@@ -1357,7 +1352,7 @@ lr_list = [0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1]
 
 for learning_rate in lr_list:
     gb_clf = GradientBoostingClassifier(
-        n_estimators=20, learning_rate=learning_rate, max_features=2, max_depth=2, random_state=0)
+        n_estimators=20, learning_rate=learning_rate, max_features=2, max_depth=2)
     gb_clf.fit(X_train, y_train)
 
     print("Learning rate: ", learning_rate)
@@ -1371,7 +1366,7 @@ for learning_rate in lr_list:
 
 
 # fine tuning
-gb_classifier = GradientBoostingClassifier(random_state=0)
+gb_classifier = GradientBoostingClassifier()
 param_grid = {'n_estimators': [20],
               'learning_rate': [0.75, 1],
               'max_features': [2],
@@ -1411,7 +1406,7 @@ plt.title('Confusion matrix', y=1.1)
 plt.ylabel('Actual label')
 plt.xlabel('Predicted label')
 # Extract Confusion Matrix Gradient boosting
-plt.savefig('images\\C_fig114.png')
+plt.savefig('public\\images\\C_fig114.png')
 
 # In[191]:
 
