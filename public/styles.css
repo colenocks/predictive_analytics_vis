@@ -4,7 +4,7 @@ body {
   font-family: "Comic Neue", cursive !important;
   font-size: 17px !important;
   background: #f3f3f3;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
 }
 
@@ -17,6 +17,28 @@ footer {
   margin: 0 auto;
   text-align: center;
   padding: 1%;
+}
+
+.tray {
+  position: relative;
+  max-height: 500px;
+  max-width: 700px;
+  border: #033d1d solid 1px;
+  margin: 5% auto;
+}
+
+.tray img {
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+#display {
+  visibility: hidden;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 3% auto;
 }
 
 .results ul li {

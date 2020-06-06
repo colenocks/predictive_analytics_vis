@@ -2,18 +2,23 @@
   <body>
     <%- include('./includes/navigation.ejs') %>
     <div class="container">
-      <main class="text-capitalize my-3">
+      <main class="text-capitalize my-3 mx-auto">
             <% if(filepath) {%>
             <form action="/result" method="POST">
                 <div class="form-group row">
                     <input name="file_path" type="hidden" value="<%= filepath %>">
                     <div class="col-lg-6 col-10">
-                        <button type="submit" class="btn btn-success">
-                            See your result
+                        <button 
+                        id="run-script"
+                        type="submit" class="btn btn-lg btn-success mx-auto">
+                            Click! See your result
                         </button>
                     </div>
                 </div>
             </form>
+            <div id="display" class="text-capitalize my-4 mx-auto">
+                <p>Running script, wait for about 2 - 3 mins...😊😊</p>
+            </div>
             <% } else {%>
             <%}%>
         </main>

@@ -50,7 +50,7 @@
           >
             <h3>See Visualizations here...</h3>
             <% images.forEach(image => { %>
-              <div>
+              <div class="tray">
                 <img src="<%=image%>" alt=""/>
               </div>
               <% });%>
@@ -63,8 +63,7 @@
           >
             <h3>Algorithm figures</h3>
             <% algorithms.forEach(alg=> { %>
-              <div height='300px' width='500px'>
-               
+              <div class="tray">
                 <img src="<%=alg%>" alt=""/>
               </div>
               <% });%>

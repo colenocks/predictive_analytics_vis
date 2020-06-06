@@ -79,20 +79,6 @@ app.post("/result", (req, res) => {
       console.log(`stderr: ${stderr}`);
     }
 
-    /* OR */
-    // const pyScript = spawn("ipython ", ["t.py", fileinput]); //Runs the python script
-
-    // pyScript.stderr.on("data", (data) => {
-    //   console.log(`stderr: ${data}`);
-    // });
-
-    // pyScript.on("error", (error) => {
-    //   console.log(`error: ${error.message}`);
-    // });
-
-    // //After script has finsihed running
-    // pyScript.on("close", (code) => {
-    //   console.log(`child process exited with code ${code}`);
     //After running python script
     if (stdout) {
       async function readIntoAndRetrieveFilesSync() {
@@ -130,9 +116,6 @@ app.post("/result", (req, res) => {
       readIntoAndRetrieveFilesSync()
         .then((data) => {
           const { images, algorithms, file_context } = data;
-          // console.log(`Algo: ${data.algorithm}`);
-          // console.log(`file_context: ${data.file_context}`);
-          // console.log(`images: ${data.images}`);
 
           if (data) {
             res.render("result.ejs", {
