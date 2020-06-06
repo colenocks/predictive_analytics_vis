@@ -96,11 +96,14 @@ init_notebook_mode(connected=True)
 
 # In[8]:
 
-# fileinput = sys.argv[1]
-# if not ".csv" in fileinput:
-#     fileinput += ".csv"
-# hr = pd.read_csv(fileinput)
-hr = pd.read_csv('.\\resources\\HR_dataset.csv')
+# pass csv file via input argument
+fileinput = sys.argv[1]
+if not ".csv" in fileinput:
+    fileinput += ".csv"
+hr = pd.read_csv(fileinput)
+
+# add file directly to script
+# hr = pd.read_csv('.\\resources\\HR_dataset.csv')
 
 
 # In[9]:
@@ -162,6 +165,7 @@ hr['Attrition'].value_counts()
 
 # plotting histograms for the numerical columns or attributes
 hr.hist(figsize=(26, 26))
+plt.tight_layout()
 plt.savefig('public\\images\\fig17.png', dpi=150)
 
 
@@ -194,7 +198,8 @@ fig['layout'].update(xaxis=dict(range=[15, 60], dtick=5))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 #### plotly to matplotlib conversion using plot_mpl ####
-plotly.io.write_image(fig, "public\\images\\fig19.png")
+plotly.io.write_image(fig, "public\\images\\fig19.png",
+                      width=700, height=600, scale=2)
 
 
 # In[20]:
@@ -218,6 +223,7 @@ for field in list(hr['EducationField'].unique()):
 df_EF = df_EducationField.groupby(by="Field").sum()
 df_EF.iplot(kind='bar', title='Leavers by Education Field (%)')
 
+
 # In[22]:
 
 
@@ -231,7 +237,6 @@ hr['Gender'].value_counts()
 print("Normalised gender distribution of ex-employees in the dataset: Male = {:.1f}%; Female {:.1f}%.".format((hr[(hr['Attrition'] == 'Yes')
                                                                                                                   & (hr['Gender'] == 'Male')].shape[0] / hr[hr['Gender'] == 'Male'].shape[0])*100,
                                                                                                               (hr[(hr['Attrition'] == 'Yes') & (hr['Gender'] == 'Female')].shape[0] / hr[hr['Gender'] == 'Female'].shape[0])*100))
-
 
 # In[24]:
 
@@ -304,7 +309,8 @@ fig['layout'].update(xaxis=dict(range=[0, 30], dtick=2))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 # Convert to matplotlib using plot_mpl #
-plotly.io.write_image(fig, "public\\images\\fig29.png")
+plotly.io.write_image(fig, "public\\images\\fig29.png",
+                      width=700, height=600, scale=2)
 
 
 # In[25]:
@@ -441,7 +447,8 @@ fig['layout'].update(xaxis=dict(range=[0, 6], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 # Convert to matplotlib using plot_mpl #
-plotly.io.write_image(fig, "public\\images\\fig36.png")
+plotly.io.write_image(fig, "public\\images\\fig36.png",
+                      width=700, height=600, scale=2)
 
 
 # In[37]:
@@ -499,7 +506,8 @@ fig['layout'].update(xaxis=dict(range=[0, 40], dtick=5))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 # Convert to matplotlib using plot_mpl #
-plotly.io.write_image(fig, "public\\images\\fig41.png")
+plotly.io.write_image(fig, "public\\images\\fig41.png",
+                      width=700, height=600, scale=2)
 
 
 # In[42]:
@@ -527,7 +535,8 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 18], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig43.png")
+plotly.io.write_image(fig, "public\\images\\fig43.png",
+                      width=700, height=600, scale=2)
 
 
 # In[44]:
@@ -555,7 +564,8 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 15], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig45.png")
+plotly.io.write_image(fig, "public\\images\\fig45.png",
+                      width=700, height=600, scale=2)
 
 # In[46]:
 
@@ -582,7 +592,8 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 40], dtick=5))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig47.png")
+plotly.io.write_image(fig, "public\\images\\fig47.png",
+                      width=700, height=600, scale=2)
 
 
 # In[48]:
@@ -618,7 +629,8 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 17], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig50.png")
+plotly.io.write_image(fig, "public\\images\\fig50.png",
+                      width=700, height=600, scale=2)
 
 
 # In[51]:
@@ -716,7 +728,8 @@ fig['layout'].update(title='Monthly Income by Attrition Status')
 fig['layout'].update(xaxis=dict(range=[0, 20000], dtick=2000))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig60.png")
+plotly.io.write_image(fig, "public\\images\\fig60.png",
+                      width=700, height=600, scale=2)
 
 
 # In[61]:
@@ -743,7 +756,8 @@ fig['layout'].update(title='Percent Salary Hike by Attrition Status')
 fig['layout'].update(xaxis=dict(range=[10, 26], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig62.png")
+plotly.io.write_image(fig, "public\\images\\fig62.png",
+                      width=700, height=600, scale=2)
 
 # In[63]:
 
@@ -944,7 +958,8 @@ sns.heatmap(corr,
             mask=mask,
             # annot=True, fmt='.2f',
             linewidths=.2, cmap="YlGnBu")
-plt.savefig('public\\images\\fig44heatmap')
+plt.tight_layout()
+plt.savefig('public\\images\\fig44heatmap', dpi=150)
 
 # In[81]:
 
@@ -1101,6 +1116,7 @@ fig.suptitle('Algorithm Accuracy Comparison')
 ax = fig.add_subplot(111)
 plt.boxplot(acc_R)
 ax.set_xticklabels(names)
+plt.tight_layout()
 plt.savefig('public\\algorithms\\A_fig124.png', dpi=150)
 
 
@@ -1115,6 +1131,7 @@ fig.suptitle('Algorithm ROC AUC Comparison')
 ax = fig.add_subplot(111)
 plt.boxplot(auc_R)
 ax.set_xticklabels(names)
+plt.tight_layout()
 plt.savefig('public\\algorithms\\A_fig125.png', dpi=150)
 
 
@@ -1252,6 +1269,7 @@ plt.title("Feature Importance")  # Create plot title
 plt.bar(range(X_train.shape[1]), importances[indices])  # Add bars
 # Add feature names as x-axis labels
 plt.xticks(range(X_train.shape[1]), names, rotation=90)
+plt.tight_layout()
 plt.savefig('public\\algorithms\\A_fig155.png', dpi=150)
 # Show plot
 
@@ -1340,8 +1358,8 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('ROC Graph')
 plt.legend(loc="lower right")
+plt.tight_layout()
 plt.savefig('public\\algorithms\\A_fig190.png', dpi=150)
-plt.show()
 
 
 # In[98]:
@@ -1405,8 +1423,9 @@ plt.tight_layout()
 plt.title('Confusion matrix', y=1.1)
 plt.ylabel('Actual label')
 plt.xlabel('Predicted label')
+plt.tight_layout()
 # Extract Confusion Matrix Gradient boosting
-plt.savefig('public\\images\\C_fig114.png')
+plt.savefig('public\\images\\C_fig114.png', dpi=150)
 
 # In[191]:
 
