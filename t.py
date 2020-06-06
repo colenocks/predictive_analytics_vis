@@ -1116,7 +1116,6 @@ fig.suptitle('Algorithm Accuracy Comparison')
 ax = fig.add_subplot(111)
 plt.boxplot(acc_R)
 ax.set_xticklabels(names)
-plt.tight_layout()
 plt.savefig('public\\algorithms\\A_fig124.png', dpi=150)
 
 
@@ -1131,7 +1130,6 @@ fig.suptitle('Algorithm ROC AUC Comparison')
 ax = fig.add_subplot(111)
 plt.boxplot(auc_R)
 ax.set_xticklabels(names)
-plt.tight_layout()
 plt.savefig('public\\algorithms\\A_fig125.png', dpi=150)
 
 
@@ -1425,7 +1423,7 @@ plt.ylabel('Actual label')
 plt.xlabel('Predicted label')
 plt.tight_layout()
 # Extract Confusion Matrix Gradient boosting
-plt.savefig('public\\images\\C_fig114.png', dpi=150)
+plt.savefig('public\\images\\M_fig114.png', dpi=150)
 
 # In[191]:
 
