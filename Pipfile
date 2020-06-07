@@ -8,7 +8,6 @@ pylint = "*"
 autopep8 = "*"
 
 [packages]
-bokeh = "*"
 jupyter = "*"
 sklearn = "*"
 pandas = "*"

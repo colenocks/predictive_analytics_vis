@@ -9,7 +9,7 @@ const fs = require("fs");
 const multer = require("multer");
 
 const port = process.env.PORT || 7000;
-const hostname = process.env.HOST;
+const hostname = process.env.HOST || "localhost";
 
 //set multer storage
 /* 
@@ -69,7 +69,7 @@ app.post("/result", (req, res) => {
   fileinput.split("\\").join("\\\\");
   console.log("input: " + fileinput);
 
-  exec("ipython t.py " + fileinput, (error, stdout, stderr) => {
+  exec("ipython pyscript.py " + fileinput, (error, stdout, stderr) => {
     if (error) {
       res.send(`error: ${error.message}`);
       return;
