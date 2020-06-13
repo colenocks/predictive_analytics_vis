@@ -166,7 +166,9 @@ hr['Attrition'].value_counts()
 # plotting histograms for the numerical columns or attributes
 hr.hist(figsize=(26, 26))
 plt.tight_layout()
-plt.savefig('public\\images\\fig17.png', dpi=150)
+with open('public\\images\\titles.txt', 'w+') as title_:
+    print('Histograms for the numerical columns or attributes', file=title_)
+plt.savefig('public\\images\\fig1_17.png', dpi=150)
 
 
 # In[18]:
@@ -198,8 +200,10 @@ fig['layout'].update(xaxis=dict(range=[15, 60], dtick=5))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 #### plotly to matplotlib conversion using plot_mpl ####
-plotly.io.write_image(fig, "public\\images\\fig19.png",
+plotly.io.write_image(fig, "public\\images\\fig2_19.png",
                       width=700, height=600, scale=2)
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('Age Distribution by Attrition Status', file=title_)
 
 
 # In[20]:
@@ -309,8 +313,10 @@ fig['layout'].update(xaxis=dict(range=[0, 30], dtick=2))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 # Convert to matplotlib using plot_mpl #
-plotly.io.write_image(fig, "public\\images\\fig29.png",
+plotly.io.write_image(fig, "public\\images\\fig3_29.png",
                       width=700, height=600, scale=2)
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('Distance From Home Distribution by Attrition Status', file=title_)
 
 
 # In[25]:
@@ -447,8 +453,10 @@ fig['layout'].update(xaxis=dict(range=[0, 6], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 # Convert to matplotlib using plot_mpl #
-plotly.io.write_image(fig, "public\\images\\fig36.png",
+plotly.io.write_image(fig, "public\\images\\fig4_36.png",
                       width=700, height=600, scale=2)
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('Training Times Last Year metric', file=title_)
 
 
 # In[37]:
@@ -506,9 +514,10 @@ fig['layout'].update(xaxis=dict(range=[0, 40], dtick=5))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
 # Convert to matplotlib using plot_mpl #
-plotly.io.write_image(fig, "public\\images\\fig41.png",
+plotly.io.write_image(fig, "public\\images\\fig5_41.png",
                       width=700, height=600, scale=2)
-
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('Years At Company', file=title_)
 
 # In[42]:
 
@@ -531,13 +540,14 @@ fig = ff.create_distplot(hist_data, group_labels,
                          curve_type='kde', show_hist=False, show_rug=False)
 # Add title
 fig['layout'].update(
-    title='Years InCurrent Role in Percent by Attrition Status')
+    title='Years In Current Role in Percent by Attrition Status')
 fig['layout'].update(xaxis=dict(range=[0, 18], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig43.png",
+plotly.io.write_image(fig, "public\\images\\fig6_43.png",
                       width=700, height=600, scale=2)
-
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('Years In Current Role', file=title_)
 
 # In[44]:
 
@@ -564,8 +574,10 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 15], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig45.png",
+plotly.io.write_image(fig, "public\\images\\fig7_45.png",
                       width=700, height=600, scale=2)
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('Years Since Last Promotion', file=title_)
 
 # In[46]:
 
@@ -592,9 +604,10 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 40], dtick=5))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig47.png",
+plotly.io.write_image(fig, "public\\images\\fig8_47.png",
                       width=700, height=600, scale=2)
-
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('Total Working Years', file=title_)
 
 # In[48]:
 
@@ -629,9 +642,10 @@ fig['layout'].update(
 fig['layout'].update(xaxis=dict(range=[0, 17], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig50.png",
+plotly.io.write_image(fig, "public\\images\\fig9_50.png",
                       width=700, height=600, scale=2)
-
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('Years With Current Manager', file=title_)
 
 # In[51]:
 
@@ -728,9 +742,10 @@ fig['layout'].update(title='Monthly Income by Attrition Status')
 fig['layout'].update(xaxis=dict(range=[0, 20000], dtick=2000))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig60.png",
+plotly.io.write_image(fig, "public\\images\\figA1_60.png",
                       width=700, height=600, scale=2)
-
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('Monthly Income', file=title_)
 
 # In[61]:
 
@@ -756,8 +771,10 @@ fig['layout'].update(title='Percent Salary Hike by Attrition Status')
 fig['layout'].update(xaxis=dict(range=[10, 26], dtick=1))
 # Plot
 plotly.offline.iplot(fig, filename='Distplot with Multiple Datasets')
-plotly.io.write_image(fig, "public\\images\\fig62.png",
+plotly.io.write_image(fig, "public\\images\\figA2_62.png",
                       width=700, height=600, scale=2)
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('Salary Hike Percentage', file=title_)
 
 # In[63]:
 
@@ -959,7 +976,7 @@ sns.heatmap(corr,
             # annot=True, fmt='.2f',
             linewidths=.2, cmap="YlGnBu")
 plt.tight_layout()
-plt.savefig('public\\images\\fig44heatmap', dpi=150)
+plt.savefig('public\\images\\figA3_44heatmap', dpi=150)
 
 # In[81]:
 
@@ -1116,7 +1133,9 @@ fig.suptitle('Algorithm Accuracy Comparison')
 ax = fig.add_subplot(111)
 plt.boxplot(acc_R)
 ax.set_xticklabels(names)
-plt.savefig('public\\algorithms\\A_fig124.png', dpi=150)
+with open('public\\algorithms\\titles.txt', 'w+') as title_:
+    print('Algorithm Accuracy Comparison', file=title_)
+plt.savefig('public\\algorithms\\A_fig1_124.png', dpi=150)
 
 
 # In[125]:
@@ -1130,7 +1149,9 @@ fig.suptitle('Algorithm ROC AUC Comparison')
 ax = fig.add_subplot(111)
 plt.boxplot(auc_R)
 ax.set_xticklabels(names)
-plt.savefig('public\\algorithms\\A_fig125.png', dpi=150)
+with open('public\\algorithms\\titles.txt', 'a+') as title_:
+    print('Algorithm ROC AUC Comparison', file=title_)
+plt.savefig('public\\algorithms\\A_fig2_125.png', dpi=150)
 
 
 # In[ ]:
@@ -1268,7 +1289,9 @@ plt.bar(range(X_train.shape[1]), importances[indices])  # Add bars
 # Add feature names as x-axis labels
 plt.xticks(range(X_train.shape[1]), names, rotation=90)
 plt.tight_layout()
-plt.savefig('public\\algorithms\\A_fig155.png', dpi=150)
+with open('public\\algorithms\\titles.txt', 'a+') as title_:
+    print('Feature Importance', file=title_)
+plt.savefig('public\\algorithms\\A_fig3_155.png', dpi=150)
 # Show plot
 
 # In[156]:
@@ -1357,7 +1380,9 @@ plt.ylabel('True Positive Rate')
 plt.title('ROC Graph')
 plt.legend(loc="lower right")
 plt.tight_layout()
-plt.savefig('public\\algorithms\\A_fig190.png', dpi=150)
+with open('public\\algorithms\\titles.txt', 'a+') as title_:
+    print('ROC graph', file=title_)
+plt.savefig('public\\algorithms\\A_fig4_190.png', dpi=150)
 
 
 # In[98]:
@@ -1423,7 +1448,9 @@ plt.ylabel('Actual label')
 plt.xlabel('Predicted label')
 plt.tight_layout()
 # Extract Confusion Matrix Gradient boosting
-plt.savefig('public\\images\\M_fig114.png', dpi=150)
+with open('public\\algorithms\\titles.txt', 'a+') as title_:
+    print('Confusion Matrix', file=title_)
+plt.savefig('public\\algorithms\\A_fig5confusionM_114.png', dpi=150)
 
 # In[191]:
 

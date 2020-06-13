@@ -55,9 +55,11 @@ app.post("/", upload.single("file"), async (req, res) => {
 app.post("/result", (req, res) => {
   let fileinput = ".\\";
   fileinput += req.body.file_path;
-  let file_context = "";
+  let accuracyScores = [];
   let images = [];
+  let imgTitles = [];
   let algorithms = [];
+  let algoTitles = [];
 
   //Check the existence of the file
   if (!fileinput) {
@@ -82,48 +84,109 @@ app.post("/result", (req, res) => {
     //After running python script
     if (stdout) {
       async function readIntoAndRetrieveFilesSync() {
-        const file_name = path.join(__dirname, "file.txt");
+        const file_ = path.join(__dirname, "file.txt");
+        const imageTitles = path.join(
+          __dirname,
+          "public",
+          "images",
+          "titles.txt"
+        );
+        const algorithmTitles = path.join(
+          __dirname,
+          "public",
+          "algorithms",
+          "titles.txt"
+        );
         const imageFolder = path.join(__dirname, "public", "images");
         const algorithmFolder = path.join(__dirname, "public", "algorithms");
 
-        file_context = fs.readFileSync(file_name, "utf8");
-        if (!file_context) {
+        let file = fs.readFileSync(file_, "utf8");
+        if (!file) {
           console.log("file_context: " + err);
-          file_context = "No Content in File, run again!";
+        } else {
+          //split and extract file contents
+          let splitContents = file.split("\n");
+          splitContents.forEach((content) => {
+            accuracyScores.push(content.split(":"));
+          });
         }
 
         //get images
         let imgFiles = fs.readdirSync(imageFolder);
         imgFiles.forEach((file) => {
           let src = path.join("images", file);
-          console.log(src);
           images.push(src);
         });
+
+        //get images Titles
+        let img_titles = fs.readFileSync(imageTitles, "utf8");
+        if (!img_titles) {
+          console.log("No Images titles: " + err);
+        } else {
+          //split and extract file contents
+          let get_img_titles = img_titles.split("\n");
+          get_img_titles.forEach((content) => {
+            imgTitles.push(content);
+          });
+        }
 
         //get algorithm images
         let algoFiles = fs.readdirSync(algorithmFolder);
         algoFiles.forEach((file) => {
           let src = path.join("algorithms", file);
-          console.log(src);
           algorithms.push(src);
         });
 
-        if (images && algorithms && file_context) {
-          return { images, algorithms, file_context };
+        //get algorithms Titles
+        let alg_titles = fs.readFileSync(algorithmTitles, "utf8");
+        if (!alg_titles) {
+          console.log("No algorithms titles: " + err);
+        } else {
+          //split and extract file contents
+          let get_alg_titles = alg_titles.split("\n");
+          get_alg_titles.forEach((content) => {
+            algoTitles.push(content);
+          });
+        }
+
+        if (images && algorithms && accuracyScores && algoTitles && imgTitles) {
+          return { images, algorithms, accuracyScores, algoTitles, imgTitles };
         }
       }
+
       //call synchronous function
       readIntoAndRetrieveFilesSync()
         .then((data) => {
-          const { images, algorithms, file_context } = data;
+          const {
+            images,
+            algorithms,
+            accuracyScores,
+            algoTitles,
+            imgTitles,
+          } = data;
 
           if (data) {
+            console.log(
+              accuracyScores,
+              images,
+              imgTitles,
+              algorithms,
+              algoTitles
+            );
             res.render("result.ejs", {
-              fileContext: file_context
-                ? file_context
-                : "Nothing here, check python script",
+              accuracyScores: accuracyScores
+                ? accuracyScores
+                : "Nothing was Retrieved, Please check dataset or run script again",
+              imgTitles: imgTitles
+                ? imgTitles
+                : "Could not retrieve images titles",
               images: images ? images : "Could not retrieve images",
-              algorithms: algorithms ? algorithms : "Could not retrieve images",
+              algoTitles: algoTitles
+                ? algoTitles
+                : "Could not retrieve images titles",
+              algorithms: algorithms
+                ? algorithms
+                : "Could not retrieve images ",
             });
           }
         })
