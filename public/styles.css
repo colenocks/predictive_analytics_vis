@@ -1,19 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Comic+Neue&family=Marck+Script&family=Parisienne&family=Sacramento&display=swap");
 
+* {
+  box-sizing: border-box;
+}
 body {
-  font-family: "Comic Neue", cursive !important;
-  font-size: 17px !important;
-  background: #f3f3f3;
-  min-height: 100vh;
   position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+  font-size: 18px !important;
+  /* background: url("./mybgd.jpg"); */
+  background: #d1d1d1;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  line-height: 1.4;
+  min-height: 100vh;
+  color: #7952b3 !important;
+}
+
+#navbar {
+  border-bottom: #7952b3 4px solid !important;
+  margin-bottom: 5%;
+  box-shadow: 0 -1px 17px #5e2bac;
+}
+
+#navbar a {
+  color: #7952b3 !important;
+  letter-spacing: 2px;
+  font-weight: 700;
 }
 
 footer {
   font-family: "Marck Script", cursive;
   position: absolute;
   bottom: 0;
+  height: auto;
   width: 100%;
-  color: #fff !important;
+  color: #7952b3 !important;
   margin: 0 auto;
   text-align: center;
   padding: 1%;
@@ -21,14 +43,32 @@ footer {
 
 .tray {
   position: relative;
-  max-height: 500px;
-  max-width: 700px;
-  border: #033d1d solid 1px;
-  margin: 5% auto;
+  min-height: 500px;
+  min-width: 700px;
+  border: #6f0df0 solid 3px;
+  border-radius: 10px;
+  margin: 7% auto;
+  padding: 2% 3%;
+}
+
+.title {
+  color: #2e0563;
+  text-transform: capitalize;
+  border-bottom: skyblue;
+  margin-bottom: 1%;
+}
+
+.title span {
+  background: #555;
+  padding: 2%;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bolder;
 }
 
 .tray img {
-  height: auto;
+  position: relative;
+  height: fit-content;
   max-width: 100%;
   display: block;
 }
