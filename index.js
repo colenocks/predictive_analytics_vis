@@ -55,8 +55,7 @@ app.post("/", upload.single("file"), async (req, res) => {
 });
 
 app.post("/result", (req, res) => {
-  let fileinput = ".\\";
-  fileinput += req.body.file_path;
+  let fileinput = req.body.file_path;
   let accuracyScores = [];
   let images = [];
   let imgTitles = [];
@@ -70,7 +69,7 @@ app.post("/result", (req, res) => {
 
   //Get result from python script
   /* Using spawn/exec childprocess */
-  fileinput.split("\\").join("\\\\");
+  fileinput.split("/").join("\\\\");
   console.log("input: " + fileinput);
 
   exec("ipython pyscript.py " + fileinput, (error, stdout, stderr) => {
