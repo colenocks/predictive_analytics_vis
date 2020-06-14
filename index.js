@@ -1,3 +1,4 @@
+//Deployment to heroku fails if dotenv is required for production
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 const { spawn, exec } = require("child_process");
@@ -8,8 +9,8 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const multer = require("multer");
 
-const port = process.env.PORT || 7000;
-const hostname = process.env.HOST || "localhost";
+const port = process.env.PORT ? process.env.PORT : 3000;
+const hostname = process.env.HOST ? process.env.HOST : "localhost";
 
 //set multer storage
 /* 
