@@ -26,6 +26,10 @@ Orca stands for Open-source Report Creator App. It is an Electron app that helps
 
 psutil stands for Python System and process Utilities. It is a cross-platform library for retrieving information on running processes and system utilization in Python. It implements many functionalities offered by UNIX command line tools such as: ps, top, netstat, ifconfig, who, etc. psutil supports all major operating systems such as Linux, Windows and MacOs
 
+### Gunicorn
+
+Gunicorn is a pure-Python HTTP server for WSGI applications that allows any Python applications run concurrently, running multiple Python processes within a single dyno.
+
 # Complete Instructions
 
 1. Clone the repo or download the zip file (unzip) and navigate to root directory.

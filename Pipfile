@@ -22,6 +22,7 @@ seaborn = "*"
 matplotlib = "*"
 psutil = "*"
 requests = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
