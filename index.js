@@ -55,8 +55,8 @@ app.post("/", upload.single("file"), async (req, res) => {
 });
 
 app.post("/result", (req, res) => {
-  // let fileinput = ".\\";
-  let fileinput = req.body.file_path;
+  let fileinput = ".\\";
+  fileinput += req.body.file_path;
   let accuracyScores = [];
   let images = [];
   let imgTitles = [];
