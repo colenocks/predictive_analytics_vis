@@ -1,4 +1,4 @@
-require("dotenv").config();
+if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 const { spawn, exec } = require("child_process");
 const express = require("express");
