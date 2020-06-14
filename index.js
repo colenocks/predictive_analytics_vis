@@ -16,7 +16,7 @@ const hostname = process.env.HOST || "localhost";
 /* 
   Save uploaded files into resources older with multer
 */
-const storagePath = path.join(__dirname, "public/resources");
+const storagePath = path.join(__dirname, "public", "resources");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, storagePath);
@@ -46,16 +46,18 @@ app.get("/", (req, res, next) => {
 app.post("/", upload.single("file"), async (req, res) => {
   if (req.file) {
     const file = req.file;
-    const path = file.path;
+    const filename = file.filename;
+    // const path = file.path;
     return res.render("visualize.ejs", {
-      filepath: path,
+      filepath: filename,
     });
   }
   res.send("File was not found");
 });
 
 app.post("/result", (req, res) => {
-  let fileinput = req.body.file_path;
+  let filename = req.body.file_path;
+  let filepath = path.join(storagePath, filename);
   let accuracyScores = [];
   let images = [];
   let imgTitles = [];
@@ -63,16 +65,16 @@ app.post("/result", (req, res) => {
   let algoTitles = [];
 
   //Check the existence of the file
-  if (!fileinput) {
+  if (!filepath) {
     return res.send("Something went wrong! Upload file again");
   }
 
   //Get result from python script
   /* Using spawn/exec childprocess */
-  fileinput.split("/").splice(0, 1).join("\\\\");
-  console.log("input: " + fileinput);
+  // filepath.split("/").splice(0, 1).join("\\\\");
+  console.log("input: " + filepath);
 
-  exec("ipython pyscript.py " + fileinput, (error, stdout, stderr) => {
+  exec("ipython pyscript.py " + filepath, (error, stdout, stderr) => {
     if (error) {
       res.send(`error: ${error.message}`);
       return;
