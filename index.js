@@ -16,7 +16,7 @@ const hostname = process.env.HOST || "localhost";
 /* 
   Save uploaded files into resources older with multer
 */
-const storagePath = path.join(__dirname, "public", "resources");
+const storagePath = path.join(__dirname, "public/resources");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, storagePath);
