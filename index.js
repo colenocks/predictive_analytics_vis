@@ -69,7 +69,7 @@ app.post("/result", (req, res) => {
 
   //Get result from python script
   /* Using spawn/exec childprocess */
-  fileinput.split("/").join("\\\\");
+  fileinput.split("/").splice(0, 1).join("\\\\");
   console.log("input: " + fileinput);
 
   exec("ipython pyscript.py " + fileinput, (error, stdout, stderr) => {
