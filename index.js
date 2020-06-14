@@ -73,7 +73,7 @@ app.post("/result", (req, res) => {
   // filepath.split("/").splice(0, 1).join("\\\\");
   console.log("input: " + filepath);
 
-  exec("ipython pyscript.py " + filepath, (error, stdout, stderr) => {
+  exec(`python pyscript.py ${filepath}`, (error, stdout, stderr) => {
     if (error) {
       res.send(`error: ${error.message}`);
       return;
