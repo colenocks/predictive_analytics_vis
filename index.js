@@ -18,7 +18,7 @@ const hostname = process.env.HOST || "localhost";
 */
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "resources");
+    cb(null, "public/resources");
   },
   filename: function (req, file, cb) {
     // the null as first argument means no error
