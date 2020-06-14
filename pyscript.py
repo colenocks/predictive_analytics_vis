@@ -976,6 +976,8 @@ sns.heatmap(corr,
             # annot=True, fmt='.2f',
             linewidths=.2, cmap="YlGnBu")
 plt.tight_layout()
+with open('public\\images\\titles.txt', 'a+') as title_:
+    print('HeatMap of Attrition and All Factors', file=title_)
 plt.savefig('public\\images\\figA3_44heatmap', dpi=150)
 
 # In[81]:
@@ -1459,7 +1461,7 @@ plt.savefig('public\\algorithms\\A_fig5confusionM_114.png', dpi=150)
 print('Accuracy of gradient boosting Classifier on test set: {:.2f}'.format(
     gb_opt.score(X_test, y_test)*100))
 
-with open('file.txt', 'w+') as gb:
+with open('public\\file.txt', 'w+') as gb:
     print('Accuracy of gradient boosting Classifier on test set: {:.2f}'.format(
         gb_opt.score(X_test, y_test)*100), file=gb)
 # In[116]:
@@ -1480,7 +1482,7 @@ probs = probs[:, 1]
 logit_roc_auc = roc_auc_score(y_test, probs)
 print('AUC score: %.3f' % logit_roc_auc)
 
-with open('file.txt', 'a+') as auc:
+with open('public\\file.txt', 'a+') as auc:
     print('AUC score: %.3f' % logit_roc_auc, file=auc)
 
 # In[ ]:

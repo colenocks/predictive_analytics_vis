@@ -84,7 +84,7 @@ app.post("/result", (req, res) => {
     //After running python script
     if (stdout) {
       async function readIntoAndRetrieveFilesSync() {
-        const file_ = path.join(__dirname, "file.txt");
+        const file_ = path.join(__dirname, "public", "file.txt");
         const imageTitles = path.join(
           __dirname,
           "public",
@@ -190,8 +190,8 @@ app.post("/result", (req, res) => {
             });
           }
         })
-        .catch(() => {
-          res.send("Could not retrieve images to display");
+        .catch((err) => {
+          res.send("Could not retrieve images to display: " + err);
         });
     }
   });

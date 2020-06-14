@@ -28,6 +28,18 @@
               >Predictions</a
             >
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="pills-scores-tab"
+              data-toggle="pill"
+              href="#pills-scores"
+              role="tab"
+              aria-controls="pills-scores"
+              aria-selected="false"
+              >Scores</a
+            >
+          </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
           <div
@@ -39,7 +51,7 @@
             <h3>All Visualizations</h3>
               <% for (let i = 0; i < images.length - 1;  i++ ) { %>
                 <div class="tray">
-                  <h3 class="title"><%=imgTitles[i]%></h3>
+                  <h5 class="title"><%=imgTitles[i]%></h5>
                   <img src="<%=images[i]%>" alt="<%=imgTitles[i]%>"/>
                 </div>
               <% };%>
@@ -53,22 +65,28 @@
             <h3>Prediction Figures</h3>
               <% for (let i = 0; i < algorithms.length -1;  i++ ) { %>
                 <div class="tray">
-                  <h3 class="title"><%=algoTitles[i]%></h3>
+                  <h5 class="title"><%=algoTitles[i]%></h5>
                   <img src="<%=algorithms[i]%>" alt="<%=algoTitles[i]%>"/>
                 </div>
               <% };%>
-            <hr/>
-            <% for (let i = 0; i < accuracyScores.length - 1;  i++ ) { %>
-              <div class="scores">
-                <h4 class="title"><%=accuracyScores[i][0]%>: <span><%=accuracyScores[i][1]%></span></h4>
-              </div>
-            <% };%>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-scores"
+            role="tabpanel"
+            aria-labelledby="pills-scores-tab"
+          >
+          <% for (let i = 0; i < accuracyScores.length - 1;  i++ ) { %>
+            <div class="scores">
+              <h5 class="title"><%=accuracyScores[i][0]%>: <span><%=accuracyScores[i][1]%></span></h5>
+            </div>
+          <% };%>
+          <div class="mt-5 text-center text-capitalize">
+            <p>
+              Upload another dataset? <a type="button" href="/">Home</a>
+            </p>
           </div>
         </div>
-        <div class="mt-5 text-center text-capitalize">
-          <p>
-            Upload another dataset? <a type="button" href="/">Home</a>
-          </p>
         </div>
       </main>
     </div>
