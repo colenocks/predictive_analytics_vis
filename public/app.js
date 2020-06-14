@@ -8,6 +8,8 @@ function displayWaitMessage() {
   display.style.visibility = "visible";
 }
 
-runScript.addEventListener("click", () => {
-  displayWaitMessage();
-});
+if (runScript) {
+  runScript.addEventListener("click", () => {
+    displayWaitMessage();
+  });
+}
